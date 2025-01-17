@@ -1,0 +1,43 @@
+# Docker Compose File
+# ====================
+# Create a new file: docker-compose.yml
+# -------------------------------------
+# version: '3.8'
+# services:
+#   user-service:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile.user
+#     ports:
+#       - "5001:5001"
+#   order-service:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile.order
+#     ports:
+#       - "5002:5002"
+#   rabbitmq:
+#     image: rabbitmq:3-management
+#     ports:
+#       - "5672:5672"
+#       - "15672:15672"
+
+
+# Kong Gateway Configuration
+# ===========================
+# Create a new file: kong.yml
+# ---------------------------
+_format_version: "3.0"
+services:
+- name: user-service
+  url: http://user-service:5001
+  routes:
+  - name: user-route
+    paths:
+    - /users
+- name: order-service
+  url: http://order-service:5002
+  routes:
+  - name: order-route
+    paths:
+    - /orders
