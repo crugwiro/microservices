@@ -1,0 +1,18 @@
+# Docker Compose File
+# ====================
+# Create a new file: docker-compose.yml
+# -------------------------------------
+version: '3.8'
+services:
+  user-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.usr
+    ports:
+      - "5001:5001"
+  order-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.ord
+    ports:
+      - "5002:5002"
