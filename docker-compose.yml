@@ -16,3 +16,8 @@ services:
       dockerfile: Dockerfile.ord
     ports:
       - "5002:5002"
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
